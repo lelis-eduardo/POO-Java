@@ -15,9 +15,16 @@ public class Medico {
 		this.nome = nome;
 		this.email = email;
 		this.crm = crm;	
-		id = montaIdentificador();
+		this.id = montaIdentificador();
 	} // end contrutor
 	
+	public Medico(Medico m) {
+		
+		this.nome = m.getNome();
+		this.email = m.getEmail();
+		this.crm = m.getCrm();
+		this.id = m.getId();
+	}
 	
 	public String getNome() {
 		return nome;

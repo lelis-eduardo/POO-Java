@@ -18,11 +18,12 @@ public class Consulta {
 	
 	public Medico getMedico() {
 		
-		return medico;
+		return new Medico(this.medico);
 	}
 
 	public Paciente getPaciente() {
-		return paciente;
+		
+		return new Paciente(this.paciente);
 	}
 
 	public ArrayList<Procedimento> getProcedimentos() {

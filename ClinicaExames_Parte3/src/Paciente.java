@@ -22,6 +22,14 @@ public class Paciente {
 		this.id = montaIdentificador();
 	} // end construtor
 
+	public Paciente(Paciente p) {
+		
+		this.nome = p.getNome();
+		this.email = p.getEmail();
+		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		this.dataNascimento = LocalDate.parse(p.getDataNascimento(), this.formatter);
+		this.id = p.getId();
+	}
 	
 	public String getNome() {
 		return nome;
