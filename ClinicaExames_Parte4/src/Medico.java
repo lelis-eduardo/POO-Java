@@ -1,62 +1,48 @@
 
-public class Medico {
+public class Medico extends Pessoa implements CalculaSalario{
 
 	// Atributos
-	private String nome;
-	private String email;
 	private String crm;
-	private String id;
 	private static int numId;
 	
 	// Métodos
 	//Construtor
 	public Medico(String nome, String email, String crm){
 		
-		this.nome = nome;
-		this.email = email;
+		super(nome, email);
 		this.crm = crm;	
-		this.id = montaIdentificador();
+		numId++;
 	} // end contrutor
 	
 	public Medico(Medico m) {
 		
-		this.nome = m.getNome();
-		this.email = m.getEmail();
+		super(m);
 		this.crm = m.getCrm();
-		this.id = m.getId();
+		numId++;		
 	}
-	
-	public String getNome() {
-		return nome;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
 
 	public String getCrm() {
-		return crm;
+		return this.crm;
 	}
 
-
-	public String getId() {
-		return id;
-	}
-	
+	@Override
 	public String toString() {
 		
-		String apresentacao = "Dr(a) " + this.nome + " - CRM:" + this.crm + "\n(" + this.email + ")";
+		String apresentacao = "Dr(a) " + super.getNome() + " - CRM:" + this.crm + "\n("
+		+ super.getEmail() + ")";
 		
 		return apresentacao;
 	} // end toString
 	
-	private static String montaIdentificador() {
-		
-		numId++;
+	@Override
+	public String getId() {
 		
 		return "ME" + numId;
-	} // end montaIdentificador
+	}
 	
+	@Override
+	public double valorSalario() {
+		
+		return 0.0;
+	}
 } // end class
