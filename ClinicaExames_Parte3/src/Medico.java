@@ -6,7 +6,7 @@ public class Medico {
 	private String email;
 	private String crm;
 	private String id;
-	private static int numId;
+	private static int sequencial = 0;
 	
 	// Métodos
 	//Construtor
@@ -15,7 +15,8 @@ public class Medico {
 		this.nome = nome;
 		this.email = email;
 		this.crm = crm;	
-		this.id = montaIdentificador();
+		sequencial++;
+		this.id = "ME" + sequencial;
 	} // end contrutor
 	
 	public Medico(Medico m) {
@@ -51,12 +52,5 @@ public class Medico {
 		
 		return apresentacao;
 	} // end toString
-	
-	private static String montaIdentificador() {
-		
-		numId++;
-		
-		return "ME" + numId;
-	} // end montaIdentificador
 	
 } // end class

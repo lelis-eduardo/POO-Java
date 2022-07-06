@@ -16,9 +16,8 @@ public class Consulta {
 	} //end construtor
 	
 	
-	public Medico getMedico() {
-		
-		return new Medico(this.medico);
+	public String getNomeMedico() {
+		return medico.getNome();
 	}
 
 	public Paciente getPaciente() {

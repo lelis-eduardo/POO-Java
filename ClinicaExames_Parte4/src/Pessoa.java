@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public abstract class Pessoa {
 	
@@ -14,12 +12,6 @@ public abstract class Pessoa {
 		this.nome = nome;
 		this.email = email;
 	} // end construtor
-	
-	public Pessoa(Pessoa p) {
-		
-		this.nome = p.getNome();
-		this.email = p.getEmail();
-	}
 	
 	public String getNome() {
 		return nome;

@@ -7,9 +7,9 @@ public class Paciente {
 	private String nome;
 	private String email;
 	private LocalDate dataNascimento;
-	private String id;
-	private static int numId;
 	private DateTimeFormatter formatter;
+	private String id;
+	private static int sequencial = 0;
 	
 	//Métodos
 	//Construtor
@@ -19,7 +19,8 @@ public class Paciente {
 		this.email = email;
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.dataNascimento = LocalDate.parse(dataNascimento, this.formatter);
-		this.id = montaIdentificador();
+		sequencial++;
+		this.id = "PA" + sequencial;
 	} // end construtor
 
 	public Paciente(Paciente p) {
@@ -55,11 +56,5 @@ public class Paciente {
 			return apresentacao;
 		} // end toString
 
-	private static String montaIdentificador() {
-		
-		numId++;
-		
-		return "PA" + numId;
-	} // end montaIdentificador
 	
 	} // end class

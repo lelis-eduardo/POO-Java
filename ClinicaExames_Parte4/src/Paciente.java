@@ -6,7 +6,8 @@ public class Paciente extends Pessoa{
 	// Atributos
 	private LocalDate dataNascimento;
 	private DateTimeFormatter formatter;
-	private static int numId;
+	private static int sequencial = 0;
+	private String id;
 	
 	//Métodos
 	//Construtor
@@ -15,15 +16,17 @@ public class Paciente extends Pessoa{
 		super(nome, email);		
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.dataNascimento = LocalDate.parse(dataNascimento, this.formatter);
-		numId++;
+		sequencial++;
+		id = "PA" + sequencial;
 	} // end construtor
 
 	public Paciente(Paciente p) {
 		
-		super(p);
+		super(p.getNome(), p.getEmail());
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.dataNascimento = LocalDate.parse(p.getDataNascimento(), this.formatter);
-		numId++;
+		sequencial++;
+		this.id = "PA" + sequencial;
 	}
 
 	public String getDataNascimento() {
@@ -33,7 +36,7 @@ public class Paciente extends Pessoa{
 	@Override
 	public String getId() {
 		
-		return "PA" + numId;
+		return this.id;
 	}
 	
 } // end class

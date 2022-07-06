@@ -46,7 +46,7 @@ public class Teste {
 		ar1.add(pr7);
 		ar2.add(pr3);
 		ar2.add(pr2);
-		ar2.add(pr4);
+		ar2.add(pr8);
 		ar2.add(pr5);
 		ar3.add(pr6);
 		ar3.add(pr7);

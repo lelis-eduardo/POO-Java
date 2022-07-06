@@ -11,13 +11,19 @@ public class MedicoAssalariado extends Medico{
 	
 	public MedicoAssalariado(MedicoAssalariado m) {
 		
-		super(m);
-		this.salario = m.valorSalario();		
+		super(m.getNome(), m.getEmail(), m.getCrm());
+		this.salario = m.getSalario();		
 	}
 	
 	@Override
-	public double valorSalario() {
+	public double getSalario() {
 		
 		return this.salario;
+	}
+	
+	@Override
+	public String getNomeClasse() {
+		
+		return "Médico assalariado";
 	}
 }

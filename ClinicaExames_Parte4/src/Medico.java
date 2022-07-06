@@ -1,9 +1,10 @@
 
-public class Medico extends Pessoa implements CalculaSalario{
+public abstract class Medico extends Pessoa{
 
 	// Atributos
 	private String crm;
-	private static int numId;
+	private static int sequencial = 0;
+	private String id;
 	
 	// Métodos
 	//Construtor
@@ -11,20 +12,24 @@ public class Medico extends Pessoa implements CalculaSalario{
 		
 		super(nome, email);
 		this.crm = crm;	
-		numId++;
+		sequencial++;
+		this.id = "ME"+sequencial;
 	} // end contrutor
-	
-	public Medico(Medico m) {
-		
-		super(m);
-		this.crm = m.getCrm();
-		numId++;		
-	}
 
 	public String getCrm() {
 		return this.crm;
 	}
-
+	
+	@Override
+	public String getId() {
+		
+		return this.id;
+	}
+	
+	public abstract double getSalario();
+	
+	public abstract String getNomeClasse();
+	
 	@Override
 	public String toString() {
 		
@@ -34,15 +39,4 @@ public class Medico extends Pessoa implements CalculaSalario{
 		return apresentacao;
 	} // end toString
 	
-	@Override
-	public String getId() {
-		
-		return "ME" + numId;
-	}
-	
-	@Override
-	public double valorSalario() {
-		
-		return 0.0;
-	}
 } // end class

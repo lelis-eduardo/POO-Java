@@ -5,7 +5,7 @@ public class Procedimento {
 	private String descricao;
 	private double valor;
 	private String id;
-	private static int numId;
+	private static int sequencial = 0;
 	
 	// Métodos
 	//Construtor
@@ -13,7 +13,8 @@ public class Procedimento {
 		
 		this.descricao = descricao;
 		this.valor = valor;
-		this.id = montaIdentificador();
+		sequencial++;
+		this.id = "PO" + sequencial;  
 	} // end construtor
 
 	
@@ -36,12 +37,5 @@ public class Procedimento {
 			
 			return apresentacao;
 		} // end toString
-	
-	private static String montaIdentificador() {
-		
-		numId++;
-		
-		return "PO" + numId;
-	} // end montaIdentificador
 	
 	} // end class
