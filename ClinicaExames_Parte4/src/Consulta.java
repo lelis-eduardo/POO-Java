@@ -16,8 +16,8 @@ public class Consulta {
 	} //end construtor
 	
 	
-	public String getNomeMedico() {
-		return medico.getNome();
+	public String getIdMedico() {
+		return medico.getId();
 	}
 
 	public Paciente getPaciente() {

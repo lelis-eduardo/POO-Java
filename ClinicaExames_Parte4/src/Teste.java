@@ -16,8 +16,8 @@ public class Teste {
 
 //		// TESTES PARTE 4
 //		// ==========================================================================================
-		//Instanciando medicos
-		
+		// Instanciando medicos
+
 		MedicoAssalariado m1 = new MedicoAssalariado("Eduardo", "eduardo@gmail.com", "222", 15000);
 		MedicoAssalariado m2 = new MedicoAssalariado("Liana", "liana@gmail.com", "777", 25000);
 		MedicoComissionado m3 = new MedicoComissionado("Henrique", "henrique@gmail.com", "123", 0.5);
@@ -58,39 +58,40 @@ public class Teste {
 		Consulta c1 = new Consulta(m3, p1, ar1);
 		Consulta c2 = new Consulta(m4, p2, ar2);
 		Consulta c3 = new Consulta(m3, p3, ar3);
-		Consulta c4 = new Consulta(m4, p1, ar2);
-		
-		//Consultas feitas pelos médicos comissionados
-		m3.adicionaConsulta(c1);
-		m3.adicionaConsulta(c2);
-		m3.adicionaConsulta(c3);
-		m3.adicionaConsulta(c4);
-		m4.adicionaConsulta(c1);
-		m4.adicionaConsulta(c2);
-		m4.adicionaConsulta(c3);
-		m4.adicionaConsulta(c4);
-		
+		Consulta c4 = new Consulta(m4, p1, ar3);
+
+		// Criando ArrayList de consultas
+		ArrayList<Consulta> co1 = new ArrayList<Consulta>();
+		// Adicionando consultas no ArrayList
+		co1.add(c1);
+		co1.add(c2);
+		co1.add(c3);
+		co1.add(c4);
+
+		// Instanciando agenda
+		Agenda a1 = new Agenda(co1);
+
 		System.out.println(m1);
 		System.out.println("Id: " + m1.getId());
 		System.out.println("Tipo: " + IdentificadorDeMedico.identificaMedico(m1));
-		System.out.println("Salário: " + m1.getSalario());
+		System.out.println("Salário: " + m1.getSalario(a1));
 		System.out.println();
 		System.out.println(m2);
 		System.out.println("Id: " + m2.getId());
 		System.out.println("Tipo: " + IdentificadorDeMedico.identificaMedico(m2));
-		System.out.println("Salário: " + m2.getSalario());
+		System.out.println("Salário: " + m2.getSalario(a1));
 		System.out.println();
 		System.out.println(m3);
 		System.out.println("Id: " + m3.getId());
 		System.out.println("Tipo: " + IdentificadorDeMedico.identificaMedico(m3));
-		System.out.println("Salário: " + m3.getSalario());
+		System.out.println("Salário: " + m3.getSalario(a1));
 		System.out.println();
 		System.out.println(m4);
 		System.out.println("Id: " + m4.getId());
 		System.out.println("Tipo: " + IdentificadorDeMedico.identificaMedico(m4));
-		System.out.println("Salário: " + m4.getSalario());
+		System.out.println("Salário: " + m4.getSalario(a1));
 		System.out.println();
-		
+
 //		// ==========================================================================================
 
 	} // end main

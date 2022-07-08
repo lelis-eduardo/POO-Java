@@ -28,6 +28,21 @@ public class Agenda {
 		return valor;
 	} // end faturamentoTotal
 	
+	public double faturamentoTotalMedico(MedicoComissionado m) {
+		
+		double salario = 0.0;
+		
+		for(Consulta item : this.consultas) {
+			
+			if(item.getIdMedico() == m.getId())
+				salario += item.valorConsulta();
+		}
+		
+		salario = salario*m.getComissionamento();
+		
+		return salario;
+	}
+	
 	public int quantidadeConsultas() {
 		
 		return this.consultas.size();
