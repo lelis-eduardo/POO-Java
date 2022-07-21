@@ -10,7 +10,7 @@ public class MedicoAssalariado extends Medico{
 	}
 	
 	@Override
-	public double getSalario(Agenda a) {
+	public double getSalario() {
 		
 		return this.salario;
 	}

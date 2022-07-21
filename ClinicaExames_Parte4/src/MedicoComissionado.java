@@ -14,10 +14,9 @@ public class MedicoComissionado extends Medico {
 		return this.comissionamento;
 	}
 	
-	@Override
-	public double getSalario(Agenda a) {
+	public double getSalario() {
 		
-		return a.faturamentoTotalMedico(this);
+		return Agenda.faturamentoTotalMedico(this);
 	}
 	
 	@Override

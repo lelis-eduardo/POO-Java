@@ -26,7 +26,7 @@ public abstract class Medico extends Pessoa{
 		return this.id;
 	}
 	
-	public abstract double getSalario(Agenda a);
+	public abstract double getSalario();
 	
 	public abstract String getTipoMedico();
 	

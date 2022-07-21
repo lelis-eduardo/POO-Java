@@ -1,38 +1,30 @@
 import java.util.*;
 
-public class Agenda {
+public abstract class Agenda {
 
 	// Atributos
-	private ArrayList<Consulta> consultas;
+	private static ArrayList<Consulta> consultas = new ArrayList<Consulta>();
 	
-	
-	// Métodos
-	public Agenda(ArrayList<Consulta> consultas){
+	public static ArrayList<Consulta> getConsultas() {
 		
-		this.consultas = consultas;
-	} // end construtor
-	
-	
-	public ArrayList<Consulta> getConsultas() {
-		
-		return new ArrayList<Consulta>(this.consultas);
+		return new ArrayList<Consulta>(consultas);
 	}
 
-	public double faturamentoTotal() {
+	public static double faturamentoTotal() {
 		
 		double valor = 0.0;
 		
-		for(Consulta item : this.consultas)	
+		for(Consulta item : consultas)	
 			valor += item.valorConsulta();
 
 		return valor;
 	} // end faturamentoTotal
-	
-	public double faturamentoTotalMedico(MedicoComissionado m) {
+
+	public static double faturamentoTotalMedico(MedicoComissionado m) {
 		
 		double salario = 0.0;
 		
-		for(Consulta item : this.consultas) {
+		for(Consulta item : consultas) {
 			
 			if(item.getIdMedico() == m.getId())
 				salario += item.valorConsulta();
@@ -43,28 +35,28 @@ public class Agenda {
 		return salario;
 	}
 	
-	public int quantidadeConsultas() {
+	public static int quantidadeConsultas() {
 		
-		return this.consultas.size();
+		return consultas.size();
 	} // end quantidadeConsultas
 	
 	
 	
-	public boolean adicionaConsulta(Consulta c) {
+	public static boolean adicionaConsulta(Consulta c) {
 		
-		return this.consultas.add(c);
+		return consultas.add(c);
 	}
 	
 	
-	public boolean removeConsulta(Consulta c) {
+	public static boolean removeConsulta(Consulta c) {
 		
-		return this.consultas.remove(c);
+		return consultas.remove(c);
 	}	
 	
 	
-	public boolean procuraConsulta(Consulta c) {
+	public static boolean procuraConsulta(Consulta c) {
 		
-		return this.consultas.contains(c);
+		return consultas.contains(c);
 	}
 	
 } // end class
