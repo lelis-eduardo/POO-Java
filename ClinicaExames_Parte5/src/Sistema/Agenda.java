@@ -1,3 +1,4 @@
+package Sistema;
 
 import java.util.*;
 
@@ -27,7 +28,7 @@ public abstract class Agenda {
 		
 		for(Consulta item : consultas) {
 			
-			if(item.getIdMedico() == m.getId())
+			if(item.getMedico().getId() == m.getId())
 				salario += item.valorConsulta();
 		}
 		
@@ -58,6 +59,36 @@ public abstract class Agenda {
 	public static boolean procuraConsulta(Consulta c) {
 		
 		return consultas.contains(c);
+	}
+	
+	public static String relatorioOrdemCrescenteNomePaciente() {
+		
+		String relatorio = "";
+		
+		for(Consulta item : consultas) {
+		
+			relatorio += item.getPaciente().getTratamento() + "\n";
+		}
+	
+		return relatorio;
+	}
+	
+	public static String relatorioOrdemDecrescenteNomeMedico() {
+		
+		String relatorio = "";
+		ArrayList<Consulta> c = new ArrayList<Consulta>();
+		
+		for(Consulta item : consultas) {
+			
+			c.add(0, item);
+		}
+		
+		for(Consulta item : c) {
+			
+			relatorio += item.getMedico().getTratamento() + "\n";
+		}
+	
+		return relatorio;
 	}
 	
 } // end class
