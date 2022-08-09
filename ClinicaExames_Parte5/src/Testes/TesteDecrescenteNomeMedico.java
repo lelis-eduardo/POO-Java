@@ -8,6 +8,8 @@ public class TesteDecrescenteNomeMedico {
 
 	public static void main(String[] args) {
 		
+// Preparação do teste e criação da agenda da clínica
+// #####################################################################################
 		MedicoAssalariado m1 = new MedicoAssalariado("Eduardo", "Lelis", "M", "eduardo@gmail.com", "222", 15000);
 		MedicoAssalariado m2 = new MedicoAssalariado("Liana", "Sena", "f", "liana@gmail.com", "777", 25000);
 		MedicoComissionado m3;
@@ -94,8 +96,11 @@ public class TesteDecrescenteNomeMedico {
 		Agenda.adicionaConsulta(c7);
 		Agenda.adicionaConsulta(c8);
 		Agenda.adicionaConsulta(c9);
-		Agenda.adicionaConsulta(c10);
+		Agenda.adicionaConsulta(c10);		
+// #####################################################################################
 		
+// Teste das funcionalidades
+// #####################################################################################
 		ArrayList<Consulta> lista = new ArrayList<Consulta>();
 		lista = Agenda.getConsultas();
 		

@@ -32,6 +32,7 @@ public class TesteExececaoComissionamento {
 			e.printStackTrace();
 			System.out.println();
 			System.out.println("O programa pegou a exceção, médico m2 não criado!");
+			System.out.println("Comissionamento acima do permitido!");
 			System.out.println();
 		}
 		

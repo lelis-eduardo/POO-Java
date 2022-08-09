@@ -1,11 +1,10 @@
 package Testes;
 
+import java.util.*;
 import Sistema.*;
-import java.util.ArrayList;
-import java.util.Collections;
 
-public class TesteCrescenteNomePaciente {
-	
+public class TesteDivisaoCategorias {
+
 	public static void main(String[] args) {
 	
 // Preparação do teste e criação da agenda da clínica
@@ -27,14 +26,14 @@ public class TesteCrescenteNomePaciente {
 		Paciente p9 = new Paciente("Ingrid", "Cebolas", "M", "cebolas@gmail.com", "18/01/1960");
 		Paciente p10 = new Paciente("Jose", "Cebolas", "M", "cebolas@gmail.com", "18/01/1960");
 		// Instanciando procedimentos
-		Procedimento pr1 = new Procedimento("Cirurgia Joelho", 500.0);
-		Procedimento pr2 = new Procedimento("Cirurgia Cotovelo", 700.0);
-		Procedimento pr3 = new Procedimento("Cirurgia Cabeça", 850.0);
+		Procedimento pr1 = new Procedimento("Cirurgia Joelho", 10000.0);
+		Procedimento pr2 = new Procedimento("Cirurgia Cotovelo", 2000.0);
+		Procedimento pr3 = new Procedimento("Cirurgia Cabeça", 12000.0);
 		Procedimento pr4 = new Procedimento("Cirurgia Pé", 1000.0);
-		Procedimento pr5 = new Procedimento("Cirurgia Canela", 100.0);
-		Procedimento pr6 = new Procedimento("Cirurgia Olho", 1700.0);
-		Procedimento pr7 = new Procedimento("Cirurgia Ouvido", 2850.0);
-		Procedimento pr8 = new Procedimento("Cirurgia Boca", 4000.0);
+		Procedimento pr5 = new Procedimento("Cirurgia Canela", 1000.0);
+		Procedimento pr6 = new Procedimento("Cirurgia Olho", 2000.0);
+		Procedimento pr7 = new Procedimento("Cirurgia Ouvido", 10000.0);
+		Procedimento pr8 = new Procedimento("Cirurgia Boca", 2000.0);
 	
 		// Criando ArrayList de procedimentos
 		ArrayList<Procedimento> ar1 = new ArrayList<Procedimento>();
@@ -49,10 +48,10 @@ public class TesteCrescenteNomePaciente {
 		ar2.add(pr2);
 		ar2.add(pr4);
 		ar2.add(pr5);
-		ar3.add(pr6);
-		ar3.add(pr7);
+		ar3.add(pr2);
 		ar3.add(pr8);
-		ar3.add(pr4);
+		ar3.add(pr8);
+		ar3.add(pr2);
 		
 		try {
 			
@@ -96,46 +95,20 @@ public class TesteCrescenteNomePaciente {
 		Agenda.adicionaConsulta(c7);
 		Agenda.adicionaConsulta(c8);
 		Agenda.adicionaConsulta(c9);
-		Agenda.adicionaConsulta(c10);		
+		Agenda.adicionaConsulta(c10);
 // #####################################################################################
-
+		
 // Teste das funcionalidades
 // #####################################################################################
-		ArrayList<Consulta> lista = new ArrayList<Consulta>();
-		lista = Agenda.getConsultas();
 		
-		CriterioNomePaciente criterioPaciente = new CriterioNomePaciente();
-		Collections.sort(lista, criterioPaciente);
+		ClassificaPacientes.classificaPacientes(Agenda.getConsultas());
 		
-		double valorTotalMedicos = 0.0;
-		double valorTotalClinica = 0.0;
+		DivisaoCategoria divisoes = ClassificaPacientes.getDivisao();
+		Set<Paciente> listaPacientes = divisoes.getLista();
 		
-		for(Consulta item : lista) {
-			
-			valorTotalMedicos += item.faturamentoMedicoPorConsulta();
-			valorTotalClinica += item.faturamentoClinicaoPorConsulta();
-			
-			System.out.println();
-			System.out.println("Paciente: " + item.getPaciente().getNome());
-			System.out.println("Valor devido ao médico: " + item.faturamentoMedicoPorConsulta()
-			+ " (" + item.getMedico().getTipoMedico() + ")");
-			System.out.println("Valor devido à clínica: " + item.faturamentoClinicaoPorConsulta());
-		}
+		for(Paciente p : listaPacientes)			
+			System.out.println("Paciente: " + p.getNome() + " - " + divisoes.getCategoria(p).getNome()
+			+ " - Gasto: " + Agenda.gastoTotalPaciente(p));
 		
-		System.out.println();
-		System.out.println("________________________");
-		System.out.println();
-		System.out.println("Valor total aos médicos: " + valorTotalMedicos);
-		System.out.println("Valor total à clínica: " + valorTotalClinica);
-		System.out.println("Valor total recebido: " + Agenda.faturamentoTotal());
 	}
 }
-
-
-
-
-
-
-
-
-
