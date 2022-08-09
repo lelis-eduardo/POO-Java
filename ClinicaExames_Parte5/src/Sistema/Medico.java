@@ -51,6 +51,4 @@ public abstract class Medico extends Pessoa{
 	
 	public abstract double faturamentoMedicoPorConsulta(Consulta c);
 	
-	public abstract double faturamentoClinicaPorConsulta(Consulta c);
-	
 } // end class

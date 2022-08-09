@@ -37,13 +37,10 @@ public class MedicoComissionado extends Medico {
 	@Override
 	public double faturamentoMedicoPorConsulta(Consulta c) {
 		
-		return (c.valorConsulta() * this.comissionamento);
-	}
-	
-	@Override
-	public double faturamentoClinicaPorConsulta(Consulta c) {
-		
-		return (c.valorConsulta() * (1 - this.comissionamento));
+		if(c.getMedico().getId() == this.getId())
+			return (c.valorConsulta() * this.comissionamento);
+		else
+			return 0.0;
 	}
 
 }

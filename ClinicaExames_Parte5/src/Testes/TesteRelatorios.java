@@ -96,8 +96,10 @@ public class TesteRelatorios {
 		Agenda.adicionaConsulta(c9);
 		Agenda.adicionaConsulta(c10);
 	
+		System.out.println("Lista ordem crescente: \n");
 		System.out.println(Agenda.relatorioOrdemCrescenteNomePaciente());
-		System.out.println("##########################################");
+		System.out.println("##########################################\n");
+		System.out.println("Lista ordem decrescente: \n");
 		System.out.println(Agenda.relatorioOrdemDecrescenteNomeMedico());
 	}
 }

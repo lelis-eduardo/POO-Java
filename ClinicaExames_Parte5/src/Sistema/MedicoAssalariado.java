@@ -24,14 +24,8 @@ public class MedicoAssalariado extends Medico{
 	
 	@Override
 	public double faturamentoMedicoPorConsulta(Consulta c) {
-		
-		return 0.0;
-	}
 	
-	@Override
-	public double faturamentoClinicaPorConsulta(Consulta c) {
-		
-		return c.valorConsulta();
+		return 0.0;
 	}
 	
 }
