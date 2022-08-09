@@ -31,6 +31,8 @@ public abstract class Medico extends Pessoa{
 	
 	public abstract String getTipoMedico();
 	
+	public abstract double getComissionamento();
+	
 	@Override
 	public String toString() {
 		
@@ -48,7 +50,5 @@ public abstract class Medico extends Pessoa{
 		else
 			return "Dra. " + this.getNome() + " " + this.getSobrenome();
 	}
-	
-	public abstract double faturamentoMedicoPorConsulta(Consulta c);
 	
 } // end class

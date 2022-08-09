@@ -1,13 +1,13 @@
 package Testes;
 
-import Sistema.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import Sistema.*;
 
-public class TesteCrescenteNomePaciente {
-	
+public class TesteDecrescenteNomeMedico {
+
 	public static void main(String[] args) {
-	
+		
 		MedicoAssalariado m1 = new MedicoAssalariado("Eduardo", "Lelis", "M", "eduardo@gmail.com", "222", 15000);
 		MedicoAssalariado m2 = new MedicoAssalariado("Liana", "Sena", "f", "liana@gmail.com", "777", 25000);
 		MedicoComissionado m3;
@@ -99,8 +99,8 @@ public class TesteCrescenteNomePaciente {
 		ArrayList<Consulta> lista = new ArrayList<Consulta>();
 		lista = Agenda.getConsultas();
 		
-		CriterioNomePaciente criterioPaciente = new CriterioNomePaciente();
-		Collections.sort(lista, criterioPaciente);
+		CriterioNomeMedico criterioMedico = new CriterioNomeMedico();
+		Collections.sort(lista, criterioMedico);
 		
 		double valorTotalMedicos = 0.0;
 		double valorTotalClinica = 0.0;
@@ -111,7 +111,7 @@ public class TesteCrescenteNomePaciente {
 			valorTotalClinica += item.faturamentoClinicaoPorConsulta();
 			
 			System.out.println();
-			System.out.println("Paciente: " + item.getPaciente().getNome());
+			System.out.println("Paciente: " + item.getMedico().getNome());
 			System.out.println("Valor devido ao médico: " + item.faturamentoMedicoPorConsulta()
 			+ " (" + item.getMedico().getTipoMedico() + ")");
 			System.out.println("Valor devido à clínica: " + item.faturamentoClinicaoPorConsulta());
@@ -123,14 +123,6 @@ public class TesteCrescenteNomePaciente {
 		System.out.println("Valor total aos médicos: " + valorTotalMedicos);
 		System.out.println("Valor total à clínica: " + valorTotalClinica);
 		System.out.println("Valor total recebido: " + Agenda.faturamentoTotal());
-	}
+		
+	}	
 }
-
-
-
-
-
-
-
-
-

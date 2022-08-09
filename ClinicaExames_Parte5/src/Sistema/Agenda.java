@@ -61,59 +61,6 @@ public abstract class Agenda {
 		return consultas.contains(c);
 	}
 	
-	public static String relatorioOrdemCrescenteNomePaciente() {
-		
-		String relatorio = "";
-		double valorTotalMedicos = 0.0, valorTotalClinica = 0.0;
-		
-		for(Consulta item : consultas) {
-		
-				valorTotalMedicos += item.getMedico().faturamentoMedicoPorConsulta(item);
-				valorTotalClinica += (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item));
-				
-				relatorio += "\n" + item.getPaciente().getFormataNome() + "\nFaturamento médico: "
-				+ item.getMedico().faturamentoMedicoPorConsulta(item) + " ("
-				+ item.getMedico().getTipoMedico() + ")" + "\nFaturamento clínica: "
-				+ (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item)) + "\n";
-		}
-		
-		relatorio += "\nFaturamento total medicos: " + valorTotalMedicos + "\n";
-		relatorio += "Faturamento total clinica: " + valorTotalClinica + "\n";
-		relatorio += "Faturamento total: " + faturamentoTotal() + "\n";
-	
-		return relatorio;
-	}
-	
-	public static String relatorioOrdemDecrescenteNomeMedico() {
-		
-		String relatorio = "";
-		ArrayList<Consulta> c = new ArrayList<Consulta>();
-		double valorTotalMedicos = 0.0, valorTotalClinica = 0.0;
-		
-		for(Consulta item : consultas) {
-			
-			c.add(0, item);
-		}
-		
-		for(Consulta item : c) {
-			
-			valorTotalMedicos += item.getMedico().faturamentoMedicoPorConsulta(item);
-			valorTotalClinica += (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item));
-			
-			relatorio += "\n" + item.getMedico().getFormataNome() + "\nFaturamento médico: "
-			+ item.getMedico().faturamentoMedicoPorConsulta(item) + " ("
-			+ item.getMedico().getTipoMedico() + ")" + "\nFaturamento clínica: "
-			+ (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item)) + "\n";
-			
-		}
-		
-		relatorio += "\nFaturamento total medicos: " + valorTotalMedicos + "\n";
-		relatorio += "Faturamento total clinica: " + valorTotalClinica + "\n";
-		relatorio += "Faturamento total: " + faturamentoTotal() + "\n";
-	
-		return relatorio;
-	}
-	
 } // end class
 
 

@@ -11,6 +11,12 @@ public class MedicoAssalariado extends Medico{
 	}
 	
 	@Override
+	public double getComissionamento() {
+
+		return 0.0;
+	}
+	
+	@Override
 	public double getSalario() {
 		
 		return this.salario;
@@ -20,12 +26,6 @@ public class MedicoAssalariado extends Medico{
 	public String getTipoMedico() {
 		
 		return "Médico assalariado";
-	}
-	
-	@Override
-	public double faturamentoMedicoPorConsulta(Consulta c) {
-	
-		return 0.0;
 	}
 	
 }

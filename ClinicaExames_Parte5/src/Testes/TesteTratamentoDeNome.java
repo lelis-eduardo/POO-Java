@@ -3,7 +3,7 @@ package Testes;
 import Sistema.MedicoAssalariado;
 import Sistema.Paciente;
 
-public class TesteAplicacaoTratamentoNoNome {
+public class TesteTratamentoDeNome {
 
 	public static void main(String[] args) {
 		

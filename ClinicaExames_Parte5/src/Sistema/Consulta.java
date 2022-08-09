@@ -60,6 +60,16 @@ public class Consulta {
 		return this.procedimentos.contains(p);
 	}
 	
+	public double faturamentoMedicoPorConsulta() {
+		
+		return (this.valorConsulta() * this.medico.getComissionamento());
+	}
+	
+	public double faturamentoClinicaoPorConsulta() {
+		
+		return (this.valorConsulta() * (1 - this.medico.getComissionamento()));
+	}
+	
 } // end class
 
 
