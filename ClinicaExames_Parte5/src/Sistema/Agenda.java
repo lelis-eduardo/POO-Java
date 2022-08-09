@@ -64,11 +64,22 @@ public abstract class Agenda {
 	public static String relatorioOrdemCrescenteNomePaciente() {
 		
 		String relatorio = "";
+		double valorTotalMedicos = 0.0, valorTotalClinica = 0.0;
 		
 		for(Consulta item : consultas) {
 		
-			relatorio += item.getPaciente().getTratamento() + "\n";
+				valorTotalMedicos += item.getMedico().faturamentoMedicoPorConsulta(item);
+				valorTotalClinica += (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item));
+				
+				relatorio += "\n" + item.getPaciente().getFormataNome() + "\nFaturamento médico: "
+				+ item.getMedico().faturamentoMedicoPorConsulta(item) + " ("
+				+ item.getMedico().getTipoMedico() + ")" + "\nFaturamento clínica: "
+				+ (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item)) + "\n";
 		}
+		
+		relatorio += "\nFaturamento total medicos: " + valorTotalMedicos + "\n";
+		relatorio += "Faturamento total clinica: " + valorTotalClinica + "\n";
+		relatorio += "Faturamento total: " + faturamentoTotal() + "\n";
 	
 		return relatorio;
 	}
@@ -77,6 +88,7 @@ public abstract class Agenda {
 		
 		String relatorio = "";
 		ArrayList<Consulta> c = new ArrayList<Consulta>();
+		double valorTotalMedicos = 0.0, valorTotalClinica = 0.0;
 		
 		for(Consulta item : consultas) {
 			
@@ -85,8 +97,19 @@ public abstract class Agenda {
 		
 		for(Consulta item : c) {
 			
-			relatorio += item.getMedico().getTratamento() + "\n";
+			valorTotalMedicos += item.getMedico().faturamentoMedicoPorConsulta(item);
+			valorTotalClinica += (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item));
+			
+			relatorio += "\n" + item.getMedico().getFormataNome() + "\nFaturamento médico: "
+			+ item.getMedico().faturamentoMedicoPorConsulta(item) + " ("
+			+ item.getMedico().getTipoMedico() + ")" + "\nFaturamento clínica: "
+			+ (item.valorConsulta() - item.getMedico().faturamentoMedicoPorConsulta(item)) + "\n";
+			
 		}
+		
+		relatorio += "\nFaturamento total medicos: " + valorTotalMedicos + "\n";
+		relatorio += "Faturamento total clinica: " + valorTotalClinica + "\n";
+		relatorio += "Faturamento total: " + faturamentoTotal() + "\n";
 	
 		return relatorio;
 	}

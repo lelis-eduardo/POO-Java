@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Sistema.Agenda;
 import Sistema.Consulta;
+import Sistema.Medico;
 import Sistema.MedicoAssalariado;
 import Sistema.MedicoComissionado;
 import Sistema.Paciente;
@@ -16,8 +17,8 @@ public class TesteRelatorios {
 	
 		MedicoAssalariado m1 = new MedicoAssalariado("Eduardo", "Lelis", "M", "eduardo@gmail.com", "222", 15000);
 		MedicoAssalariado m2 = new MedicoAssalariado("Liana", "Sena", "f", "liana@gmail.com", "777", 25000);
-		MedicoAssalariado m3 = new MedicoAssalariado("Henrique", "Clemente", "m", "clemenrte@gmail.com", "777", 2200);
-		MedicoAssalariado m4 = new MedicoAssalariado("Ana", "Lemos", "f", "lemos@gmail.com", "777", 24200);
+		MedicoComissionado m3;
+		MedicoComissionado m4;		
 		
 		// Instanciando pacientes
 		Paciente p1 = new Paciente("Zé",  "Couves", "M", "couve@gmail.com", "10/10/1950");
@@ -50,33 +51,53 @@ public class TesteRelatorios {
 		ar3.add(pr7);
 		ar3.add(pr8);
 		ar3.add(pr4);
-	
-		// Instanciando consultas
-		Consulta c1 = new Consulta(m1, p1, ar1);
-		Consulta c2 = new Consulta(m2, p2, ar2);
-		Consulta c3 = new Consulta(m3, p3, ar3);
-		Consulta c4 = new Consulta(m4, p1, ar3);
-		Consulta c5 = new Consulta(m1, p1, ar3);
-		Consulta c6 = new Consulta(m2, p1, ar3);
-		Consulta c7 = new Consulta(m3, p1, ar3);
-		Consulta c8 = new Consulta(m4, p1, ar3);
-		Consulta c9 = new Consulta(m1, p1, ar3);
-		Consulta c10 = new Consulta(m2, p1, ar3);
 		
-		// Instanciando agenda
-		Agenda.adicionaConsulta(c1);
-		Agenda.adicionaConsulta(c2);
-		Agenda.adicionaConsulta(c3);
-		Agenda.adicionaConsulta(c4);
-		Agenda.adicionaConsulta(c5);
-		Agenda.adicionaConsulta(c6);
+		try {
+			
+			m3 = new MedicoComissionado("Henrique", "Clemente", "m", "clemente@gmail.com", "777", 0.4);
+			Consulta c4 = new Consulta(m3, p1, ar3);
+			Consulta c5 = new Consulta(m3, p1, ar2);
+			Consulta c6 = new Consulta(m3, p1, ar1);
+			
+			Agenda.adicionaConsulta(c4);
+			Agenda.adicionaConsulta(c5);
+			Agenda.adicionaConsulta(c6);
+		}
+		catch(comissionamentoInvalidoException e) {
+		
+			e.printStackTrace();
+		}
+		
+		try {
+			
+			m4 = new MedicoComissionado("Ana", "Lemos", "f", "lemos@gmail.com", "777", 0.45);
+			Consulta c1 = new Consulta(m4, p1, ar1);
+			Consulta c2 = new Consulta(m4, p2, ar2);
+			Consulta c3 = new Consulta(m4, p3, ar3);
+			
+			Agenda.adicionaConsulta(c1);
+			Agenda.adicionaConsulta(c2);
+			Agenda.adicionaConsulta(c3);
+		}
+		catch(comissionamentoInvalidoException e) {
+			
+			e.printStackTrace();
+		}
+	
+		// Instanciando consultas médicos assalariados
+		Consulta c7 = new Consulta(m2, p1, ar1);
+		Consulta c8 = new Consulta(m2, p1, ar2);
+		Consulta c9 = new Consulta(m1, p1, ar3);
+		Consulta c10 = new Consulta(m1, p1, ar2);
+		
+		// Adicionando consultas de médicos assalariados
 		Agenda.adicionaConsulta(c7);
 		Agenda.adicionaConsulta(c8);
 		Agenda.adicionaConsulta(c9);
 		Agenda.adicionaConsulta(c10);
 	
 		System.out.println(Agenda.relatorioOrdemCrescenteNomePaciente());
-		System.out.println("");
+		System.out.println("##########################################");
 		System.out.println(Agenda.relatorioOrdemDecrescenteNomeMedico());
 	}
 }

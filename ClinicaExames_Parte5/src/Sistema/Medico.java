@@ -34,19 +34,23 @@ public abstract class Medico extends Pessoa{
 	@Override
 	public String toString() {
 		
-		String apresentacao = this.getTratamento() + " - CRM:" + this.crm + "\n("
+		String apresentacao = this.getFormataNome() + " - CRM:" + this.crm + "\n("
 		+ super.getEmail() + ")";
 		
 		return apresentacao;
 	} // end toString
 	
 	@Override
-	public String getTratamento() {
+	public String getFormataNome() {
 		
-		if(this.getNome() == "Masculino")
+		if(this.getSexo() == "Masculino")
 			return "Dr. " + this.getNome() + " " + this.getSobrenome();
 		else
 			return "Dra. " + this.getNome() + " " + this.getSobrenome();
 	}
+	
+	public abstract double faturamentoMedicoPorConsulta(Consulta c);
+	
+	public abstract double faturamentoClinicaPorConsulta(Consulta c);
 	
 } // end class

@@ -40,7 +40,7 @@ public abstract class Pessoa implements FormatadorNome {
 
 	public String toString() {
 		
-			String apresentacao = this.getTratamento() + "\n(" + this.email + ")";
+			String apresentacao = this.getFormataNome() + "\n(" + this.email + ")";
 		
 			return apresentacao;
 		} // end toString

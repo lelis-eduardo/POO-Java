@@ -31,7 +31,19 @@ public class MedicoComissionado extends Medico {
 	@Override
 	public String getTipoMedico() {
 		
-		return "Médico comissionado";
+		return "Medico comissionado";
+	}
+	
+	@Override
+	public double faturamentoMedicoPorConsulta(Consulta c) {
+		
+		return (c.valorConsulta() * this.comissionamento);
+	}
+	
+	@Override
+	public double faturamentoClinicaPorConsulta(Consulta c) {
+		
+		return (c.valorConsulta() * (1 - this.comissionamento));
 	}
 
 }

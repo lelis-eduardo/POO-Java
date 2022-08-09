@@ -41,12 +41,12 @@ public class Paciente extends Pessoa{
 	}
 	
 	@Override
-	public String getTratamento() {
+	public String getFormataNome() {
 		
-		if(this.getNome() == "Masculino")
-			return "Sr." + this.getSobrenome();
+		if(this.getSexo() == "Masculino")
+			return "Sr. " + this.getSobrenome();
 		else
-			return "Sra." + this.getSobrenome();
+			return "Sra. " + this.getSobrenome();
 	}
 	
 } // end class

@@ -18,6 +18,7 @@ public class Consulta {
 	
 	
 	public Medico getMedico() {
+		
 		return this.medico;
 	}
 

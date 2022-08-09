@@ -3,5 +3,5 @@ package Sistema;
 
 public interface FormatadorNome{
 
-	public String getTratamento();
+	public String getFormataNome();
 }
