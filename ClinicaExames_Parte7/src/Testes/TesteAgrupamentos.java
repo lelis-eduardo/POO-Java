@@ -3,7 +3,7 @@ package Testes;
 import java.util.*;
 import Sistema.*;
 
-public class TesteDivisaoCategorias {
+public class TesteAgrupamentos {
 
 	public static void main(String[] args) {
 	
@@ -35,23 +35,23 @@ public class TesteDivisaoCategorias {
 		Procedimento pr7 = new Procedimento("Cirurgia Ouvido", 10000.0);
 		Procedimento pr8 = new Procedimento("Cirurgia Boca", 2000.0);
 	
-		// Criando ArrayList de procedimentos
-		ArrayList<Procedimento> ar1 = new ArrayList<Procedimento>();
-		ArrayList<Procedimento> ar2 = new ArrayList<Procedimento>();
-		ArrayList<Procedimento> ar3 = new ArrayList<Procedimento>();
+		// Criando Agrupamento de procedimentos
+		Agrupamento<Procedimento> ar1 = new Agrupamento<Procedimento>();
+		Agrupamento<Procedimento> ar2 = new Agrupamento<Procedimento>();
+		Agrupamento<Procedimento> ar3 = new Agrupamento<Procedimento>();
 		// Adicionando os procedimentos nos arrays
-		ar1.add(pr1);
-		ar1.add(pr5);
-		ar1.add(pr3);
-		ar1.add(pr7);
-		ar2.add(pr3);
-		ar2.add(pr2);
-		ar2.add(pr4);
-		ar2.add(pr5);
-		ar3.add(pr2);
-		ar3.add(pr8);
-		ar3.add(pr8);
-		ar3.add(pr2);
+		ar1.adiciona(pr1);
+		ar1.adiciona(pr5);
+		ar1.adiciona(pr3);
+		ar1.adiciona(pr7);
+		ar2.adiciona(pr3);
+		ar2.adiciona(pr2);
+		ar2.adiciona(pr4);
+		ar2.adiciona(pr5);
+		ar3.adiciona(pr2);
+		ar3.adiciona(pr8);
+		ar3.adiciona(pr8);
+		ar3.adiciona(pr2);
 		
 		try {
 			
@@ -60,9 +60,9 @@ public class TesteDivisaoCategorias {
 			Consulta c5 = new Consulta(m3, p10, ar2);
 			Consulta c6 = new Consulta(m3, p1, ar1);
 			
-			Agenda.adicionaConsulta(c4);
-			Agenda.adicionaConsulta(c5);
-			Agenda.adicionaConsulta(c6);
+			Agenda.getConsultas().adiciona(c4);
+			Agenda.getConsultas().adiciona(c5);
+			Agenda.getConsultas().adiciona(c6);
 		}
 		catch(comissionamentoInvalidoException e) {
 		
@@ -76,9 +76,9 @@ public class TesteDivisaoCategorias {
 			Consulta c2 = new Consulta(m4, p4, ar2);
 			Consulta c3 = new Consulta(m4, p6, ar3);
 			
-			Agenda.adicionaConsulta(c1);
-			Agenda.adicionaConsulta(c2);
-			Agenda.adicionaConsulta(c3);
+			Agenda.getConsultas().adiciona(c1);
+			Agenda.getConsultas().adiciona(c2);
+			Agenda.getConsultas().adiciona(c3);
 		}
 		catch(comissionamentoInvalidoException e) {
 			
@@ -92,23 +92,15 @@ public class TesteDivisaoCategorias {
 		Consulta c10 = new Consulta(m1, p9, ar2);
 		
 		// Adicionando consultas de médicos assalariados
-		Agenda.adicionaConsulta(c7);
-		Agenda.adicionaConsulta(c8);
-		Agenda.adicionaConsulta(c9);
-		Agenda.adicionaConsulta(c10);
+		Agenda.getConsultas().adiciona(c7);
+		Agenda.getConsultas().adiciona(c8);
+		Agenda.getConsultas().adiciona(c9);
+		Agenda.getConsultas().adiciona(c10);
 // #####################################################################################
 		
 // Teste das funcionalidades
 // #####################################################################################
 		
-		ClassificaPacientes.classificaPacientes(Agenda.getConsultas());
-		
-		DivisaoCategoria divisoes = ClassificaPacientes.getDivisao();
-		Set<Paciente> listaPacientes = divisoes.getLista();
-		
-		for(Paciente p : listaPacientes)			
-			System.out.println("Paciente: " + p.getNome() + " - " + divisoes.getCategoria(p).getNome()
-			+ " - Gasto: " + Agenda.gastoTotalPaciente(p));
 		
 	}
 }

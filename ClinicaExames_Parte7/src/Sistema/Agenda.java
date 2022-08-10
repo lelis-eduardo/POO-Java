@@ -5,18 +5,21 @@ import java.util.*;
 public abstract class Agenda {
 
 	// Atributos
-	private static ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+	private static Agrupamento<Consulta> consultas = new Agrupamento<Consulta>();
 	
-	public static ArrayList<Consulta> getConsultas() {
+	public static Agrupamento<Consulta> getConsultas() {
 		
-		return new ArrayList<Consulta>(consultas);
+		Agrupamento<Consulta> aux = new Agrupamento<Consulta>();
+		aux = consultas;
+		
+		return aux;
 	}
 
 	public static double faturamentoTotal() {
 		
 		double valor = 0.0;
 		
-		for(Consulta item : consultas)	
+		for(Consulta item : consultas.getLista())	
 			valor += item.valorConsulta();
 
 		return valor;
@@ -26,7 +29,7 @@ public abstract class Agenda {
 		
 		double salario = 0.0;
 		
-		for(Consulta item : consultas) {
+		for(Consulta item : consultas.getLista()) {
 			
 			if(item.getMedico().getId() == m.getId())
 				salario += item.valorConsulta();
@@ -37,35 +40,11 @@ public abstract class Agenda {
 		return salario;
 	}
 	
-	public static int quantidadeConsultas() {
-		
-		return consultas.size();
-	} // end quantidadeConsultas
-	
-	
-	
-	public static boolean adicionaConsulta(Consulta c) {
-		
-		return consultas.add(c);
-	}
-	
-	
-	public static boolean removeConsulta(Consulta c) {
-		
-		return consultas.remove(c);
-	}	
-	
-	
-	public static boolean procuraConsulta(Consulta c) {
-		
-		return consultas.contains(c);
-	}
-	
 	public static double gastoTotalPaciente(Paciente p) {
 		
 		double gastoTotal = 0.0;
 		
-		for(Consulta c : consultas) {
+		for(Consulta c : consultas.getLista()) {
 			
 			if(p.getNome() == c.getPaciente().getNome())
 				gastoTotal += c.valorConsulta();

@@ -6,10 +6,10 @@ public class Consulta {
 	// Atributos
 	private Medico medico;
 	private Paciente paciente;
-	private ArrayList<Procedimento> procedimentos;
+	private Agrupamento<Procedimento> procedimentos;
 	
 	//Métodos
-	public Consulta(Medico medico, Paciente paciente, ArrayList<Procedimento> procedimentos){
+	public Consulta(Medico medico, Paciente paciente, Agrupamento<Procedimento> procedimentos){
 		
 		this.medico = medico;
 		this.paciente = paciente;
@@ -27,38 +27,23 @@ public class Consulta {
 		return new Paciente(this.paciente);
 	}
 
-	public ArrayList<Procedimento> getProcedimentos() {
+	public Agrupamento<Procedimento> getProcedimentos() {
 		
-		return new ArrayList<Procedimento>(this.procedimentos);
+		Agrupamento<Procedimento> aux = new Agrupamento<Procedimento>();
+		aux = this.procedimentos;
+		
+		return aux;
 	}
 
 	public double valorConsulta() {
 		
 		double valor = 0.0;
 		
-		for(Procedimento item : this.procedimentos) 
+		for(Procedimento item : procedimentos.getLista()) 
 				valor += item.getValor();
 		
 		return valor;
 	} // end valorConsulta
-	
-	
-	public boolean adicionaProcedimento(Procedimento p) {
-		
-		return this.procedimentos.add(p);
-	}
-	
-	
-	public boolean removeProcedimento(Procedimento p) {
-		
-		return this.procedimentos.remove(p);
-	}
-	
-	
-	public boolean procuraProcedimento(Procedimento p) {
-		
-		return this.procedimentos.contains(p);
-	}
 	
 	public double faturamentoMedicoPorConsulta() {
 		
