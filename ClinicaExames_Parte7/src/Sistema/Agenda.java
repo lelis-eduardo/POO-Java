@@ -9,10 +9,7 @@ public abstract class Agenda {
 	
 	public static Agrupamento<Consulta> getConsultas() {
 		
-		Agrupamento<Consulta> aux = new Agrupamento<Consulta>();
-		aux = consultas;
-		
-		return aux;
+		return consultas;
 	}
 
 	public static double faturamentoTotal() {

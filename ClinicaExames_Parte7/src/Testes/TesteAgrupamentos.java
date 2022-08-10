@@ -7,7 +7,7 @@ public class TesteAgrupamentos {
 
 	public static void main(String[] args) {
 	
-// Preparação do teste e criação da agenda da clínica
+// Preparação do teste e teste dos agrupamentos e funcionalidades
 // #####################################################################################
 		MedicoAssalariado m1 = new MedicoAssalariado("Eduardo", "Lelis", "M", "eduardo@gmail.com", "222", 15000);
 		MedicoAssalariado m2 = new MedicoAssalariado("Liana", "Sena", "f", "liana@gmail.com", "777", 25000);
@@ -90,17 +90,115 @@ public class TesteAgrupamentos {
 		Consulta c8 = new Consulta(m2, p5, ar2);
 		Consulta c9 = new Consulta(m1, p7, ar3);
 		Consulta c10 = new Consulta(m1, p9, ar2);
+		Consulta c11 = new Consulta(m1, p8, ar3);
+		Consulta c12 = new Consulta(m1, p8, ar3);
+		Consulta c13 = new Consulta(m2, p8, ar3);
+		Consulta c14 = new Consulta(m1, p8, ar3);
 		
 		// Adicionando consultas de médicos assalariados
 		Agenda.getConsultas().adiciona(c7);
 		Agenda.getConsultas().adiciona(c8);
 		Agenda.getConsultas().adiciona(c9);
 		Agenda.getConsultas().adiciona(c10);
+
+// Teste dos métodos da classe agrupamento
 // #####################################################################################
 		
-// Teste das funcionalidades
-// #####################################################################################
+		//Adiciona
+		System.out.println("Adicionando consultas na agenda.");
+		System.out.print("Lista antes: ");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.print(c.getId() + " ");
+		System.out.println();
 		
+		Agenda.getConsultas().adiciona(c11);
+		System.out.println("Consulta adicionada à agenda.");
+		
+		System.out.print("Lista antes: ");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.print(c.getId() + " ");
+		System.out.println();
+		System.out.println();
+		
+		
+		//Retira
+		System.out.println("Retirando consulta da agenda.");
+		System.out.print("Lista antes: ");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.print(c.getId() + " ");
+		System.out.println();
+		
+		System.out.println("Consulta retirada da agenda: " + Agenda.getConsultas().retira(c11));
+		
+		System.out.print("Lista depois: ");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.print(c.getId() + " ");
+		System.out.println();
+		System.out.println();
+		
+		//Verifica existencia de itens
+		System.out.println("Verificando a existencia de consultas na agenda.");
+		if(Agenda.getConsultas().temItens())
+			System.out.println("A agenda possui consultas.");
+		else
+			System.out.println("A agenda não possui consultas.");
+		System.out.println();
+		
+		//Procura itens
+		System.out.println("Procurando uma consulta na agenda.");
+		if(Agenda.getConsultas().procura(c10))
+			System.out.println("Consulta " + c10.getId() + " encontrada");
+		else
+			System.out.println("Consulta não encontrada.");
+		System.out.println();
+		
+		
+		//Quantidade de itens
+		System.out.println("Descobrindo a quantidade de consultas na agenda.");
+		System.out.println("A agenda possui " + Agenda.getConsultas().quantidade() + " consultas.");
+		System.out.println();
+		
+		
+		//Adiciona em grupo
+		System.out.println("Adicionando lista de consultas: ");
+		System.out.print("Lista antes: ");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.print(c.getId() + " ");
+		System.out.println();
+	
+		List<Consulta> grupoConsultas = new ArrayList<Consulta>();
+		grupoConsultas.add(c11);
+		grupoConsultas.add(c12);
+		grupoConsultas.add(c13);
+		grupoConsultas.add(c14);
+		Agenda.getConsultas().adicionaEmGrupo(grupoConsultas);
+		
+		System.out.print("Lista depois: ");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.print(c.getId() + " ");
+		System.out.println();
+		System.out.println();
+		
+		
+		//Pegando a lista de consultas e listando os médicos
+		System.out.println("Listando médicos responsáveis pelas consultas.");
+		for(Consulta c : Agenda.getConsultas().getLista())
+			System.out.println(c.getMedico().getFormataNome());
 		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

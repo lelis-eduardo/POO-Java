@@ -7,6 +7,8 @@ public class Consulta {
 	private Medico medico;
 	private Paciente paciente;
 	private Agrupamento<Procedimento> procedimentos;
+	private static int sequencial = 0;
+	private String id;
 	
 	//Métodos
 	public Consulta(Medico medico, Paciente paciente, Agrupamento<Procedimento> procedimentos){
@@ -14,6 +16,8 @@ public class Consulta {
 		this.medico = medico;
 		this.paciente = paciente;
 		this.procedimentos = procedimentos;
+		sequencial++;
+		this.id = String.valueOf(sequencial);
 	} //end construtor
 	
 	
@@ -29,10 +33,12 @@ public class Consulta {
 
 	public Agrupamento<Procedimento> getProcedimentos() {
 		
-		Agrupamento<Procedimento> aux = new Agrupamento<Procedimento>();
-		aux = this.procedimentos;
+		return procedimentos;
+	}
+	
+	public String getId() {
 		
-		return aux;
+		return "CO" + id;
 	}
 
 	public double valorConsulta() {
@@ -53,6 +59,11 @@ public class Consulta {
 	public double faturamentoClinicaoPorConsulta() {
 		
 		return (this.valorConsulta() * (1 - this.medico.getComissionamento()));
+	}
+	
+	public String toString() {
+		
+		return "Consulta " + this.id;
 	}
 	
 } // end class
