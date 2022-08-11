@@ -45,7 +45,7 @@ public class TesteAgrupamentos {
 		ar1.adiciona(pr3);
 		ar1.adiciona(pr7);
 		ar2.adiciona(pr3);
-		ar2.adiciona(pr2);
+		ar2.adiciona(pr6);
 		ar2.adiciona(pr4);
 		ar2.adiciona(pr5);
 		ar3.adiciona(pr2);
@@ -60,9 +60,9 @@ public class TesteAgrupamentos {
 			Consulta c5 = new Consulta(m3, p10, ar2);
 			Consulta c6 = new Consulta(m3, p1, ar1);
 			
-			Agenda.getConsultas().adiciona(c4);
-			Agenda.getConsultas().adiciona(c5);
-			Agenda.getConsultas().adiciona(c6);
+			Agenda.adicionaConsulta(c4);
+			Agenda.adicionaConsulta(c5);
+			Agenda.adicionaConsulta(c6);
 		}
 		catch(comissionamentoInvalidoException e) {
 		
@@ -76,9 +76,9 @@ public class TesteAgrupamentos {
 			Consulta c2 = new Consulta(m4, p4, ar2);
 			Consulta c3 = new Consulta(m4, p6, ar3);
 			
-			Agenda.getConsultas().adiciona(c1);
-			Agenda.getConsultas().adiciona(c2);
-			Agenda.getConsultas().adiciona(c3);
+			Agenda.adicionaConsulta(c1);
+			Agenda.adicionaConsulta(c2);
+			Agenda.adicionaConsulta(c3);
 		}
 		catch(comissionamentoInvalidoException e) {
 			
@@ -96,10 +96,10 @@ public class TesteAgrupamentos {
 		Consulta c14 = new Consulta(m1, p8, ar3);
 		
 		// Adicionando consultas de médicos assalariados
-		Agenda.getConsultas().adiciona(c7);
-		Agenda.getConsultas().adiciona(c8);
-		Agenda.getConsultas().adiciona(c9);
-		Agenda.getConsultas().adiciona(c10);
+		Agenda.adicionaConsulta(c7);
+		Agenda.adicionaConsulta(c8);
+		Agenda.adicionaConsulta(c9);
+		Agenda.adicionaConsulta(c10);
 
 // Teste dos métodos da classe agrupamento
 // #####################################################################################
@@ -111,10 +111,10 @@ public class TesteAgrupamentos {
 			System.out.print(c.getId() + " ");
 		System.out.println();
 		
-		Agenda.getConsultas().adiciona(c11);
+		Agenda.adicionaConsulta(c11);
 		System.out.println("Consulta adicionada à agenda.");
 		
-		System.out.print("Lista antes: ");
+		System.out.print("Lista depois: ");
 		for(Consulta c : Agenda.getConsultas().getLista())
 			System.out.print(c.getId() + " ");
 		System.out.println();
@@ -128,7 +128,7 @@ public class TesteAgrupamentos {
 			System.out.print(c.getId() + " ");
 		System.out.println();
 		
-		System.out.println("Consulta retirada da agenda: " + Agenda.getConsultas().retira(c11));
+		System.out.println("Consulta retirada da agenda: " + Agenda.removeConsulta(c11));
 		
 		System.out.print("Lista depois: ");
 		for(Consulta c : Agenda.getConsultas().getLista())
@@ -166,12 +166,12 @@ public class TesteAgrupamentos {
 			System.out.print(c.getId() + " ");
 		System.out.println();
 	
-		List<Consulta> grupoConsultas = new ArrayList<Consulta>();
+		ArrayList<Consulta> grupoConsultas = new ArrayList<Consulta>();
 		grupoConsultas.add(c11);
 		grupoConsultas.add(c12);
 		grupoConsultas.add(c13);
 		grupoConsultas.add(c14);
-		Agenda.getConsultas().adicionaEmGrupo(grupoConsultas);
+		Agenda.adicionaConsultaEmGrupo(grupoConsultas);
 		
 		System.out.print("Lista depois: ");
 		for(Consulta c : Agenda.getConsultas().getLista())
@@ -183,7 +183,7 @@ public class TesteAgrupamentos {
 		//Pegando a lista de consultas e listando os médicos
 		System.out.println("Listando médicos responsáveis pelas consultas.");
 		for(Consulta c : Agenda.getConsultas().getLista())
-			System.out.println(c.getMedico().getFormataNome());
+			System.out.println(c.getId() + ": " + c.getMedico().getFormataNome());
 		
 	}
 }

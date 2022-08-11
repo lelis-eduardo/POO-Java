@@ -4,7 +4,15 @@ import java.util.*;
 
 public class Agrupamento<E> {
 
-	private List<E> lista = new ArrayList();
+	private ArrayList<E> lista = new ArrayList<E>();
+	
+	public Agrupamento() {}
+	
+	public Agrupamento(Agrupamento<E> elementos) {
+		
+		for(E elemento : elementos.getLista())
+			lista.add(elemento);
+	}
 	
 	public void adiciona(E elemento) {
 		
@@ -39,7 +47,7 @@ public class Agrupamento<E> {
 			this.adiciona(e);
 	}
 	
-	public List<E> getLista(){
+	public ArrayList<E> getLista(){
 		
 		return lista;
 	}

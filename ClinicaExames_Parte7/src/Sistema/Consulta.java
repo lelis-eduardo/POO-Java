@@ -33,7 +33,7 @@ public class Consulta {
 
 	public Agrupamento<Procedimento> getProcedimentos() {
 		
-		return procedimentos;
+		return new Agrupamento<Procedimento>(procedimentos);
 	}
 	
 	public String getId() {
@@ -65,6 +65,21 @@ public class Consulta {
 		
 		return "Consulta " + this.id;
 	}
+	
+	public void adicionaConsulta(Procedimento p) {
+		
+		procedimentos.adiciona(p);
+	}
+	
+	public void adicionaProcedimentoEmGrupo(ArrayList<Procedimento> lista) {
+		
+		procedimentos.adicionaEmGrupo(lista);
+	}
+	
+	public Procedimento removeConsulta(Procedimento p) {
+		
+		return procedimentos.retira(p);
+	}	
 	
 } // end class
 

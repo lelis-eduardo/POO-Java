@@ -9,7 +9,7 @@ public abstract class Agenda {
 	
 	public static Agrupamento<Consulta> getConsultas() {
 		
-		return consultas;
+		return new Agrupamento<Consulta>(consultas);
 	}
 
 	public static double faturamentoTotal() {
@@ -49,6 +49,22 @@ public abstract class Agenda {
 		
 		return gastoTotal;
 	}
+	
+	public static void adicionaConsulta(Consulta c) {
+		
+		consultas.adiciona(c);
+	}
+	
+	public static void adicionaConsultaEmGrupo(ArrayList<Consulta> lista) {
+		
+		consultas.adicionaEmGrupo(lista);
+	}
+	
+	
+	public static Consulta removeConsulta(Consulta c) {
+		
+		return consultas.retira(c);
+	}	
 	
 } // end class
 
